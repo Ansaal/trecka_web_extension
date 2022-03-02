@@ -1,14 +1,15 @@
 {
-  "name": "Vue 3 Typescript Starter",
+  "name": "Trecka Web Extension",
   "version": "0.0.1",
-  "description": "Vue 3 Typescript Starter",
+  "description": "Trecka Web Extension",
   "manifest_version": 2,
-  "permissions": ["storage", "<all_urls>"],
+  "permissions": ["storage", "<all_urls>", "contextMenus"],
   "icons": {
-    "16": "logo-16.png",
-    "48": "logo-48.png",
-    "128": "logo-128.png"
+    "16": "16x16.png",
+    "48": "48x48.png",
+    "128": "128x128.png"
   },
+
   "background": {
     "scripts": ["js/background.js"]
   },

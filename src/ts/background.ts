@@ -1,12 +1,18 @@
-import { browser, Runtime } from "webextension-polyfill-ts";
+import { browser } from "webextension-polyfill-ts";
 
-browser.runtime.onMessage.addListener(
-  (message: any, sender: Runtime.MessageSender) => {
-    // To view console logs in a background page on Chrome,
-    // you go to chrome://extensions/ and inspect views under your extension
-    console.log("Hello from background.js");
-    if (message.from) {
-      console.log("Message sent by: " + message.from);
-    }
-  }
-);
+function printClickedEl(info, tab) {
+    console.log(tab);
+    browser.tabs.sendMessage(tab.id, "getClickedEl", {frameId: info.frameId}).then(xpath => {
+        console.log(xpath);
+        //TODO: Open up Trecka with xpath to describe the bug.
+
+    });
+}
+
+
+
+browser.contextMenus.create({
+    title: "Track Bug on Trecka",
+    contexts:["page"],
+    onclick: printClickedEl
+});
